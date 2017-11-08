@@ -17,6 +17,13 @@ FLGeocoder is available through Cocoapods. To install it, simply add the followi
 pod 'FLGeocoder'
 ```
 
+In your project make sure you import the FLGeocoder module and CoreLocation:
+```sh
+import CoreLocation
+import FLGeocoder
+```
+
+
 ### How To Use
 
 #### Offline Reverse Geocoding
