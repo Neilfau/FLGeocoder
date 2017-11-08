@@ -16,7 +16,7 @@ public class FLGeocoder: NSObject{
     //Singleton
     public static let shared = FLGeocoder()
     
-    //This sets the interval between each reverse geocode, if the interal is too small it can lead to the geocoder to produce an error as apple limit the amount of requests to their servers. Default is 1.0 second.
+    //This sets the interval between each reverse geocode, if the interval is too small it can lead to the geocoder  producing an error because Apple limit the amount of requests to their servers. Default is 1.0 second.
     public var geocodeInterval = 1.0
     
     private var geodata: [[String: Any]]!
@@ -52,6 +52,7 @@ public class FLGeocoder: NSObject{
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { (results, error) in
             
+            //Check there is a placemark or return
             guard let placemark = results?.first else{
                 completion(nil, error)
                 return
@@ -68,6 +69,7 @@ public class FLGeocoder: NSObject{
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (results, error) in
             
+            //Check there is a placemark or return
             guard let placemark = results?.first else{
                 completion(nil, error)
                 return
