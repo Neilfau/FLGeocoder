@@ -34,7 +34,7 @@
 		287119181FB202DA008E34BE = {
 			isa = PBXGroup;
 			children = (
-				287119241FB202DA008E34BE /* FLGecoder */,
+				287119241FB202DA008E34BE /* FLGeocoder */,
 				287119231FB202DA008E34BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,7 +47,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		287119241FB202DA008E34BE /* FLGecoder */ = {
+		287119241FB202DA008E34BE /* FLGeocoder */ = {
 			isa = PBXGroup;
 			children = (
 				2871192D1FB2031B008E34BE /* FLGeocoder.swift */,
@@ -55,7 +55,7 @@
 				287119261FB202DA008E34BE /* Info.plist */,
 				2871192F1FB20324008E34BE /* CountriesGeoCode.json */,
 			);
-			path = FLGecoder;
+			path = FLGeocoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
