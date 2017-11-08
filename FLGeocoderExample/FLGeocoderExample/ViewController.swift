@@ -35,6 +35,9 @@ class ViewController: UIViewController {
         
         //Offline Reverse Geocode
         performOfflineReverseGeocode()
+        
+        //Forward Geocoding
+        performForwardGeocoding()
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,6 +102,33 @@ class ViewController: UIViewController {
         if let countryName = geocoder.fetchCountryOfflineFor(location: testLocation, format: .Name){
             //Handle results data
             print("[Offline] Country Name: \(countryName)\n")
+        }
+        
+    }
+    
+    func performForwardGeocoding(){
+        
+        let address = "55 Oxford Street, London, United Kingdom"
+        
+        geocoder.forwardGeocode(address: address) { (result, error) in
+            
+            //Perform error handling & handle results data
+            
+            if let error = error{
+                print("Error Geocoding: \(error)")
+            }
+            
+            guard let placemark = result else{
+                return
+            }
+            
+            print("\n[ONLINE] Forward Geocode Result:")
+            print("Coordinates Lat:\(placemark.location?.coordinate.latitude ?? 0.0) Lng:\(placemark.location?.coordinate.longitude ?? 0.0)")
+            print("City: \(placemark.locality ?? "N/A")")
+            print("Region: \(placemark.administrativeArea ?? "N/A")")
+            print("Country: \(placemark.country ?? "N/A")")
+            print("Country Code: \(placemark.isoCountryCode ?? "N/A") \n")
+            
         }
         
     }
