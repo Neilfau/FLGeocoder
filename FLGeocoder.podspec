@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FLGeocoder"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Offline Geocoder & Online Batch Geocoder."
   s.description  = "FLGeocoder allows you to perform basic geocoding offline & to perform batch geocoding online using Apples geocoder class."
   s.homepage     = "http://www.faulknerlabs.io"
