@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FLGeocoder"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Offline Geocoder & Online Batch Geocoder."
   s.description  = "FLGeocoder allows you to perform basic geocoding offline & to perform batch geocoding online using Apples geocoder class."
   s.homepage     = "http://www.faulknerlabs.io"
@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "11.0"
   s.source       = { :git => "https://github.com/Neilfau/FLGeocoder.git", :tag => "#{s.version}" }
   s.source_files  = "FLGeocoder", "FLGeocoder/**/*.{h,m,swift}"
-  s.resource  = "CountriesGeoCode.json"
+  s.resources  = "FLGeocoder/*.json"
  
 end

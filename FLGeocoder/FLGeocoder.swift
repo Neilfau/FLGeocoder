@@ -13,14 +13,23 @@ import MapKit
 
 public class FLGeocoder: NSObject{
     
+    //Singleton
     public static let shared = FLGeocoder()
+    
+    //This sets the interval between each reverse geocode, if the interal is too small it can lead to the geocoder to produce an error as apple limit the amount of requests to their servers. Default is 1.0 second.
     public var geocodeInterval = 1.0
+    
     private var geodata: [[String: Any]]!
     
     public override init() {
+        
         //Load JSON country data when FLGecoder is initialised
         do {
-            if let file = Bundle.main.url(forResource: "CountriesGeoCode", withExtension: "json") {
+            //Load bundle from class
+            let frameworkBundle = Bundle(for: FLGeocoder.self)
+           
+            //Load JSON file from correct bundle
+            if let file = frameworkBundle.url(forResource: "country_data", withExtension: "json") {
                 let data = try Data(contentsOf: file)
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 if let object = json as? [[String: Any]] {
@@ -48,6 +57,7 @@ public class FLGeocoder: NSObject{
                 return
             }
     
+            //Completion handler with results
             completion(placemark, nil)
         }
     }
@@ -63,6 +73,7 @@ public class FLGeocoder: NSObject{
                 return
             }
             
+            //Completion handler with results
             completion(placemark, nil)
          
         }
@@ -134,6 +145,7 @@ public class FLGeocoder: NSObject{
                 
                 //If all locations have been processed call completion block
                 if count == tasks{
+                    //Completion handler with results
                     completion(allPlacemarks, failedLocations, errors)
                 }
             }
@@ -201,10 +213,10 @@ extension FLGeocoder{
     }
     
     
-    private func isPointInPolygon(location: CLLocation, polygon: [[Double]]) -> Bool{
+private func isPointInPolygon(location: CLLocation, polygon: [[Double]]) -> Bool{
         
-        var polyCoordinates: [CLLocationCoordinate2D] = []
-        
+    var polyCoordinates: [CLLocationCoordinate2D] = []
+    
         //Convert points too coordinates
         for object in polygon{
             let longitude = object[0]
@@ -212,10 +224,10 @@ extension FLGeocoder{
             let coordinate = CLLocationCoordinate2DMake(latiude, longitude)
             polyCoordinates.append(coordinate)
         }
-        
+    
         //Create polygon from array of coordinates
         let poly = MKPolygon(coordinates: polyCoordinates, count: polyCoordinates.count)
-        
+    
         //Use contains extension to check if location is inside polygone
         return poly.contains(coordinates: location.coordinate)
     }
