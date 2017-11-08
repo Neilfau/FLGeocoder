@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FLGecoder.xcodeproj">
+      location = "self:/Users/Neil/iOS Projects/Current Projects/FLGeocoder/FLGeocoder.xcodeproj">
    </FileRef>
 </Workspace>
