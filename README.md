@@ -19,7 +19,7 @@ FLGeocoder is available through Cocoapods. To install it, simply add the followi
 pod 'FLGeocoder'
 ```
 
-### How To User
+### How To Use
 
 #### Offline Reverse Geocoding
 
