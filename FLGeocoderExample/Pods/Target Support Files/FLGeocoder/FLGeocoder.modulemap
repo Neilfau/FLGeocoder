@@ -1,0 +1,6 @@
+framework module FLGeocoder {
+  umbrella header "FLGeocoder-umbrella.h"
+
+  export *
+  module * { export * }
+}
