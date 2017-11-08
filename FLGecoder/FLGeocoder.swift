@@ -13,12 +13,11 @@ import MapKit
 
 public class FLGeocoder: NSObject{
     
-    static let shared = FLGeocoder()
+    public static let shared = FLGeocoder()
     public var geocodeInterval = 1.0
     private var geodata: [[String: Any]]!
     
     public override init() {
-        
         //Load JSON country data when FLGecoder is initialised
         do {
             if let file = Bundle.main.url(forResource: "CountriesGeoCode", withExtension: "json") {
@@ -39,8 +38,8 @@ public class FLGeocoder: NSObject{
     }
     
     
-    func reverserGeocode(location: CLLocation, completion: @escaping (_ placemark: CLPlacemark?, _ error: Error?) -> Void){
-    
+    public func reverserGeocode(location: CLLocation, completion: @escaping (_ placemark: CLPlacemark?, _ error: Error?) -> Void){
+        //Init geocoder then reverser geocode coordinates, use completion handle to pass back results.
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { (results, error) in
             
@@ -53,9 +52,9 @@ public class FLGeocoder: NSObject{
         }
     }
     
-    func forwardGeocode(address: String, completion: @escaping (_ placemark: CLPlacemark?, _ error: Error?) -> Void){
+   public func forwardGeocode(address: String, completion: @escaping (_ placemark: CLPlacemark?, _ error: Error?) -> Void){
         
-        //Turn an address into placemark
+        //Init geocoder then turn an address into a placemark, use completion handle to pass back results.
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (results, error) in
             
@@ -69,7 +68,7 @@ public class FLGeocoder: NSObject{
         }
     }
     
-    func batchReverseGeocode(locations: [CLLocation], completion: @escaping (_ placemarks: [CLPlacemark], _ failedLocations:[CLLocation], _ errors: [Error]) -> Void){
+    public func batchReverseGeocode(locations: [CLLocation], completion: @escaping (_ placemarks: [CLPlacemark], _ failedLocations:[CLLocation], _ errors: [Error]) -> Void){
         
         //Add to background thread
         DispatchQueue.global(qos: .userInteractive).async {
@@ -148,13 +147,13 @@ extension FLGeocoder{
     
     //Offline Geocoding
     
-    enum FLCountryCodeFormat: String{
+    public enum FLCountryCodeFormat: String{
         case ISOA2 = "iso_a2"
         case ISOA3 = "iso_a3"
         case Name = "name"
     }
     
-    func fetchCountryOfflineFor(location: CLLocation, format: FLCountryCodeFormat) -> String?{
+    public func fetchCountryOfflineFor(location: CLLocation, format: FLCountryCodeFormat) -> String?{
         //Loop through JSON country data
         for country in geodata{
             
@@ -226,7 +225,7 @@ extension FLGeocoder{
 extension MKPolygon {
     
     //Convert coordinates to mappoint and check if polygon contains point
-    func contains(coordinates: CLLocationCoordinate2D) -> Bool {
+     func contains(coordinates: CLLocationCoordinate2D) -> Bool {
         let polygonRenderer = MKPolygonRenderer(polygon: self)
         let currentMapPoint: MKMapPoint = MKMapPointForCoordinate(coordinates)
         let polygonViewPoint: CGPoint = polygonRenderer.point(for: currentMapPoint)
