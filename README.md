@@ -2,8 +2,6 @@
 [![Version](https://img.shields.io/cocoapods/v/FLGeocoder.svg?style=flat)](http://cocoapods.org/pods/FLGeocoder)
 [![Platform](https://img.shields.io/cocoapods/p/FLGeocoder.svg?style=flat)](http://cocoapods.org/pods/FLGeocoder)
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift-4.0-4BC51D.svg?style=flat" alt="Language: Swift" /></a>
-[![Downloads](https://img.shields.io/cocoapods/dt/FLGeocoder.svg)](http://cocoapods.org/pods/FLGeocoder)
-[![Apps](https://img.shields.io/cocoapods/at/FLGeocoder.svg)](http://cocoapods.org/pods/FLGeocoder)
 [![License](https://img.shields.io/cocoapods/l/FLGeocoder.svg?style=flat)](http://cocoapods.org/pods/FLGeocoder)
 
 FLGeocoder is an easy to use geocoder for iOS that can perform simple offline reverse geocoding as well as batch online reverse geocoding.
